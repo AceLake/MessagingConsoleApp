@@ -11,6 +11,7 @@ namespace Messaging_app
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string EmailAddress { get; set; }
         public string ProfilePicture { get; set; }
         public bool Status { get; set; }
         public List<UserModel> Contacts { get; set; }
@@ -22,10 +23,11 @@ namespace Messaging_app
         {
         }
 
-        public UserModel(string username, string password, string profilePicture, bool status, List<UserModel> contacts, string preferences, List<MessageModel> history, List<ConversationModel> groups)
+        public UserModel(string username, string password, string emailAddress, string profilePicture, bool status, List<UserModel> contacts, string preferences, List<MessageModel> history, List<ConversationModel> groups)
         {
             Username = username;
             Password = password;
+            EmailAddress = emailAddress;
             ProfilePicture = profilePicture;
             Status = status;
             Contacts = contacts;
