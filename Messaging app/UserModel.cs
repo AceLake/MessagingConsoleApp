@@ -17,5 +17,21 @@ namespace Messaging_app
         public string Preferences { get; set; }
         public List<MessageModel> History { get; set; }
         public List<ConversationModel> Groups { get; set; }
+
+        public UserModel()
+        {
+        }
+
+        public UserModel(string username, string password, string profilePicture, bool status, List<UserModel> contacts, string preferences, List<MessageModel> history, List<ConversationModel> groups)
+        {
+            Username = username;
+            Password = password;
+            ProfilePicture = profilePicture;
+            Status = status;
+            Contacts = contacts;
+            Preferences = preferences;
+            History = history;
+            Groups = groups;
+        }
     }
 }

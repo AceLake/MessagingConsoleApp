@@ -13,5 +13,17 @@ namespace Messaging_app
         public int ConversationID { get; set; }
         public string Content { get; set; }
         public DateTime TimeStammp { get; set; }
+
+        public MessageModel()
+        {
+        }
+
+        public MessageModel(int senderID, int conversationID, string content, DateTime timeStammp)
+        {
+            SenderID = senderID;
+            ConversationID = conversationID;
+            Content = content;
+            TimeStammp = timeStammp;
+        }
     }
 }
