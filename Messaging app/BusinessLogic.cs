@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Messaging_app
 {
-    internal class BusinessLogic
+    public class BusinessLogic
     {
     }
 }

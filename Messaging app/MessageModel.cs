@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Messaging_app
 {
-    internal class MessageModel
+    public class MessageModel
     {
         public int ID { get; set; }
         public int SenderID { get; set; }
