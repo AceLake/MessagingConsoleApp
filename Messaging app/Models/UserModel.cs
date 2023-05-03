@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Messaging_app
+namespace Messaging_app.Models
 {
     public class UserModel
     {
