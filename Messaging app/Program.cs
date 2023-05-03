@@ -14,8 +14,5 @@ UserModel ken = new UserModel("TheRealKen223", "KManMode223", "KenKenal223@gmail
 
 Console.WriteLine("Welcome to the group chat!");
 
-logic.SaveUser(steve);
-logic.SaveUser(diana);
-logic.SaveUser(ken);
 
 Console.Read();
