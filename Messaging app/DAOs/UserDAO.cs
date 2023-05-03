@@ -54,12 +54,16 @@ namespace Messaging_app.DAOs
 
         public UserModel GetUserByUsernameAndPassword(string username, string password)
         {
-            UserModel returnThese = new UserModel();
+            UserModel returnThis = new UserModel();
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            MySqlCommand command = new MySqlCommand("SELECT ID, Name, Description, Price, Cost, product_categories_ID FROM products", connection);
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE Username = @username and Password = @password", connection);
+
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@password", password);
+
 
             using (MySqlDataReader reader = command.ExecuteReader())
             {
@@ -72,12 +76,13 @@ namespace Messaging_app.DAOs
                         EmailAddress = reader.GetString(2),
                         Password = reader.GetString(3),
                         ProfilePicture = reader.GetString(4),
-                        Status = reader.GetBoolean(5)
+                        Status = reader.GetBoolean(5),
+                        Preferences = reader.GetString(6)                       
                     };
                 }
             }
             connection.Close();
-            return returnThese;
+            return returnThis;
         }
 
         public int UpdateUser(UserModel user)
