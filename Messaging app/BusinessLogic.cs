@@ -11,6 +11,7 @@ namespace Messaging_app
     public class BusinessLogic
     {
         UserDAO userDAO = new UserDAO();
+
         public void SaveUser(UserModel user)
         {
             if (userDAO.CreateUser(user) == 1)
