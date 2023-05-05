@@ -12,6 +12,11 @@ namespace Messaging_app
     {
         UserDAO userDAO = new UserDAO();
 
+        public UserModel GetUser(string username, string password)
+        {
+            return userDAO.GetUserByUsernameAndPassword(username, password);
+        }
+
         public void SaveUser(UserModel user)
         {
             if (userDAO.CreateUser(user) == 1)
