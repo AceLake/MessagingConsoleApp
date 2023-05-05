@@ -14,6 +14,6 @@ UserModel ken = new UserModel("TheRealKen223", "KManMode223", "KenKenal223@gmail
 
 Console.WriteLine("Welcome to the group chat!");
 
-
+Console.WriteLine(logic.GetUser("TheRealDan223", "DManMode223").ToString());
 
 Console.Read();

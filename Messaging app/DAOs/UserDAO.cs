@@ -69,7 +69,7 @@ namespace Messaging_app.DAOs
             {
                 while (reader.Read())
                 {
-                    UserModel a = new UserModel
+                    returnThis = new UserModel
                     {
                         ID = reader.GetInt32(0),
                         Username = reader.GetString(1),
@@ -81,6 +81,7 @@ namespace Messaging_app.DAOs
                     };
                 }
             }
+
             connection.Close();
             return returnThis;
         }

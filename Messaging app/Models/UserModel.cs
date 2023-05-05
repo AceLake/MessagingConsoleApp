@@ -35,5 +35,12 @@ namespace Messaging_app.Models
             History = history;
             Groups = groups;
         }
+        public override string ToString()
+        {
+            return ("ID: " + ID
+                  + "Username: " + Username
+                  + "Password: " + Password
+                  + "Email: " + EmailAddress);
+        }
     }
 }
