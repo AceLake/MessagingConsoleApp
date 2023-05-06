@@ -12,6 +12,8 @@ namespace Messaging_app
     {
         UserDAO userDAO = new UserDAO();
 
+        // TODO: work on implementing the methods to call all CRUD functions within the app
+
         public UserModel GetUser(string username, string password)
         {
             return userDAO.GetUserByUsernameAndPassword(username, password);
