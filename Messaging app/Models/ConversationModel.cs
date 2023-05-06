@@ -18,12 +18,10 @@ namespace Messaging_app.Models
         {
         }
 
-        public ConversationModel(List<UserModel> participants, string title, MessageModel lastMessage, DateTime timeStamp)
+        public ConversationModel(string title)
         {
-            Participants = participants;
             Title = title;
-            LastMessage = lastMessage;
-            TimeStamp = timeStamp;
+            TimeStamp = DateTime.Now;
         }
     }
 }
