@@ -12,7 +12,7 @@ namespace Messaging_app.Models
         public int SenderID { get; set; }
         public int ConversationID { get; set; }
         public string Content { get; set; }
-        public DateTime TimeStammp { get; set; }
+        public DateTime TimeStamp { get; set; }
 
         public MessageModel()
         {

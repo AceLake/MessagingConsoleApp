@@ -10,7 +10,8 @@ namespace Messaging_app.DAOs
     interface IMessageDAO
     {
         public void CreateMessage(MessageModel message);
-        public MessageModel GetMessage(int id);
+        public MessageModel GetMessageByUserID(int userID);
+        public MessageModel GetMessageByConversationID(int conversatioID);
         public void UpdateMessage(MessageModel message);
         public void DeleteMessage(int id);
     }
