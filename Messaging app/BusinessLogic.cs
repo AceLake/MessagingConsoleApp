@@ -14,6 +14,13 @@ namespace Messaging_app
 
         // TODO: work on implementing the methods to call all CRUD functions within the app
 
+        MessageDAO messageDAO = new MessageDAO();
+
+        public void SendMessage(string content)
+        {
+            messageDAO.CreateMessage("Hey");
+        }
+
         public UserModel GetUser(string username, string password)
         {
             return userDAO.GetUserByUsernameAndPassword(username, password);

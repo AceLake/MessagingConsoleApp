@@ -23,7 +23,7 @@ namespace Messaging_app.Models
             SenderID = senderID;
             ConversationID = conversationID;
             Content = content;
-            TimeStammp = timeStammp;
+            TimeStamp = timeStammp;
         }
     }
 }

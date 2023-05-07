@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Messaging_app.DAOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,14 @@ namespace Messaging_app.Models
             History = history;
             Groups = groups;
         }
+        // send a message by the user
+        public void SendMessage(string content)
+        {
+            MessageDAO messageDAO = new MessageDAO();
+            MessageModel message = new MessageModel();
+            messageDAO.CreateMessage(ID,);
+        }
+
         public override string ToString()
         {
             return ("ID: " + ID
