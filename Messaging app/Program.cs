@@ -48,6 +48,4 @@ switch (choice)
         break;
 }
 
-Console.WriteLine(logic.GetUser("TheRealDan223", "DManMode223").ToString());
-
 Console.Read();
