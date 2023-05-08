@@ -41,7 +41,7 @@ namespace Messaging_app.Models
         {
             MessageDAO messageDAO = new MessageDAO();
             MessageModel message = new MessageModel();
-            messageDAO.CreateMessage(ID,);
+            //messageDAO.CreateMessage(ID);
         }
 
         public override string ToString()

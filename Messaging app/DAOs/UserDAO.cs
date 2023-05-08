@@ -11,6 +11,8 @@ namespace Messaging_app.DAOs
     internal class UserDAO : IUserDAO
     {
         string connectionString = "datasource=localhost;port=8889;username=root;password=root;database=assemblage;";
+
+
         public int CreateUser(UserModel user)
         {
             //INSERT INTO `users` (`ID`, `Username`, `EmailAddress`, `Password`, `ProfilePicture`, `Status`, `Preferences`) VALUES (NULL, 'VictorVindictor', 'DoubleVdevi@gmail.com', 'VVVictorHonty', 'https://open.spotify.com/playlist/6CkIz9hPb0J1rPDb8tAJx1', '0', 'English');
@@ -55,6 +57,8 @@ namespace Messaging_app.DAOs
         public UserModel GetUserByUsernameAndPassword(string username, string password)
         {
             UserModel returnThis = new UserModel();
+            
+            
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
@@ -79,6 +83,47 @@ namespace Messaging_app.DAOs
                         Status = reader.GetBoolean(5),
                         Preferences = reader.GetString(6)                       
                     };
+                }
+            }
+
+            command = new MySqlCommand("SELECT conversations_ID FROM `participants` WHERE `UserID` = @user_id", connection);
+
+            command.Parameters.AddWithValue("@user_id", returnThis.ID);
+
+            List<int> listOfConvoIDs = new List<int>();
+
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    listOfConvoIDs.Add(reader.GetInt32(0));
+                }
+            }
+
+            returnThis.Groups = new List<ConversationModel>();
+
+            foreach (int convoID in listOfConvoIDs)
+            {
+                command = new MySqlCommand("SELECT * FROM `conversations` WHERE ID = @convo_id", connection);
+
+                command.Parameters.AddWithValue("@convo_id", convoID);
+
+                ConversationModel group = new ConversationModel();
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        returnThis.Groups.Add(
+                                group = new ConversationModel
+                                {
+                                    ID=reader.GetInt32(0),
+                                    Title=reader.GetString(1),
+                                    // TODO: LastMessage = reader.GetString(2),
+                                    TimeStamp=reader.GetDateTime(3)
+                                }
+                            );
+                    }
                 }
             }
 

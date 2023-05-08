@@ -16,9 +16,9 @@ namespace Messaging_app
 
         MessageDAO messageDAO = new MessageDAO();
 
-        public void SendMessage(string content)
+        public void SendMessage(MessageModel content)
         {
-            messageDAO.CreateMessage("Hey");
+            messageDAO.CreateMessage(content);
         }
 
         public UserModel GetUser(string username, string password)
