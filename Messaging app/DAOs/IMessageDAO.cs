@@ -11,7 +11,7 @@ namespace Messaging_app.DAOs
     {
         public void CreateMessage(MessageModel message);
         public MessageModel GetMessageByUserID(int userID);
-        public MessageModel GetMessageByConversationID(int conversatioID);
+        public List<MessageModel> GetMessageByConversationID(int conversatioID);
         public void UpdateMessage(MessageModel message);
         public void DeleteMessage(int id);
     }

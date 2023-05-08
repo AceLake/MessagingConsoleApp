@@ -43,22 +43,22 @@ namespace Messaging_app.DAOs
                 }
             }
         }
-        public MessageModel GetMessageByConversationID(int conversatioID)
+        public List<MessageModel> GetMessageByConversationID(int conversationID)
         {
-            MessageModel message = null;
+            List<MessageModel> messages = new List<MessageModel>();
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                string query = "SELECT * FROM messages WHERE ConversatioID = @ConversationID";
+                string query = "SELECT * FROM messages WHERE ConversationID = @ConversationID";
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@ConversatioID", conversatioID);
+                    command.Parameters.AddWithValue("@ConversationID", conversationID);
 
                     connection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
-                            message = new MessageModel
+                            MessageModel message = new MessageModel
                             {
                                 ID = Convert.ToInt32(reader["ID"]),
                                 Content = reader["Content"].ToString(),
@@ -66,11 +66,12 @@ namespace Messaging_app.DAOs
                                 SenderID = Convert.ToInt32(reader["UserID"]),
                                 ConversationID = Convert.ToInt32(reader["ConversationID"])
                             };
+                            messages.Add(message);
                         }
                     }
                 }
             }
-            return message;
+            return messages;
         }
 
         public MessageModel GetMessageByUserID(int userID)

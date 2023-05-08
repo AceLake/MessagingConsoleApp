@@ -16,6 +16,11 @@ namespace Messaging_app
 
         MessageDAO messageDAO = new MessageDAO();
 
+        public List<MessageModel> GetAllMessagesInGroup(ConversationModel conversation)
+        {
+           return messageDAO.GetMessageByConversationID(conversation.ID);
+        }
+
         public void SendMessage(MessageModel content)
         {
             messageDAO.CreateMessage(content);

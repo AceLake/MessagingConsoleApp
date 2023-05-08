@@ -16,8 +16,9 @@ int choice = 0;
 
 Console.WriteLine("Welcome to assemblage!");
 Console.WriteLine("Log in with username and password");
-
+Console.Write("Username: ");
 string username = Console.ReadLine();
+Console.Write("Password: ");
 string password = Console.ReadLine();
 
 UserModel user = logic.GetUser(username, password);
@@ -27,7 +28,36 @@ Console.WriteLine("Would you like to");
 // for now it will return all conversations
 Console.WriteLine(1 + " Find a group");
 // Here it will show conversations the user is apart of
-Console.WriteLine(2 + " Chat in one of youe groups");
+Console.WriteLine(2 + " Chat in one of your groups");
+
+choice = int.Parse(Console.ReadLine());
+
+switch (choice)
+{
+    case 1:
+        Console.WriteLine("here are some groups to join");
+        break;
+    case 2:
+        Console.WriteLine("here are your groups");
+        foreach (var group in user.Groups)
+        {
+            Console.WriteLine(group.Title);
+        }
+
+        choice = int.Parse(Console.ReadLine());
+
+        List<MessageModel> messages = logic.GetAllMessagesInGroup(user.Groups.ElementAt(choice -1));
+
+        foreach (MessageModel message in messages)
+        {
+            Console.WriteLine(message.Content);
+        }
+
+        break;
+    default:
+        Console.WriteLine("select eather 1 or 2 none of this 3 or 4 nonsence");
+        break;
+}
 
 choice = int.Parse(Console.ReadLine());
 
