@@ -53,6 +53,10 @@ switch (choice)
             Console.WriteLine(message.Content);
         }
 
+        Console.Write("Me: ");
+        MessageModel sentMessage = new MessageModel(user.ID, user.Groups.ElementAt(choice - 1).ID, Console.ReadLine(), DateTime.Now);
+        logic.SendMessage(sentMessage);
+
         break;
     default:
         Console.WriteLine("select eather 1 or 2 none of this 3 or 4 nonsence");
